@@ -20,7 +20,8 @@ const node = bcoin.spvnode({
   persistent: true,
   workers: true,
   listen: true,
-  loader: require
+  loader: require,
+  network: 'bitcoincash'
 });
 
 // Temporary hack
@@ -37,8 +38,7 @@ process.on('unhandledRejection', (err, promise) => {
   await node.connect();
 
   if (node.config.bool('test')) {
-    node.pool.watchAddress('1VayNert3x1KzbpzMGt2qdqrAThiRovi8');
-    node.pool.watchOutpoint(new bcoin.outpoint());
+
     node.on('block', (block) => {
       assert(block.txs.length >= 1);
       if (block.txs.length > 1)
