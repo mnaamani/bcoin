@@ -18,7 +18,7 @@ const opcodes = Script.opcodes;
 
 const valid = require('./data/tx_valid.json');
 const invalid = require('./data/tx_invalid.json');
-const sighash = require('./data/sighash.json');
+const sighash = require('./data/cash/sighash.json');
 const tx1 = parseTX('data/tx1.hex');
 const tx2 = parseTX('data/tx2.hex');
 const tx3 = parseTX('data/tx3.hex');
@@ -330,6 +330,9 @@ describe('TX', function() {
       if (type & 0x80)
         hex |= 0x80;
 
+      if (type & 0x40)
+        hex |= 0x40;
+
       hex = hex.toString(16);
 
       if (hex.length % 2 !== 0)
@@ -338,7 +341,7 @@ describe('TX', function() {
       clearCache(tx, noCache);
 
       it(`should get sighash of ${hash} (${hex}) ${suffix}`, () => {
-        let subscript = script.getSubscript(0).removeSeparators();
+        let subscript = (type & 0x40) ? script : script.getSubscript(0).removeSeparators();
         let hash = tx.signatureHash(index, subscript, 0, type, 0);
         assert.equal(hash.toString('hex'), expected);
       });
