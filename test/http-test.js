@@ -17,14 +17,14 @@ describe('HTTP', function() {
   let node, wallet, walletdb, addr, hash;
 
   node = new FullNode({
-    network: 'regtest',
+    network: 'bitcoincash',
     apiKey: 'foo',
     walletAuth: true,
     db: 'memory'
   });
 
   wallet = new HTTP.Wallet({
-    network: 'regtest',
+    network: 'bitcoincash',
     apiKey: 'foo'
   });
 
@@ -182,7 +182,7 @@ describe('HTTP', function() {
     assert.equal(info.n, 2);
   });
 
-  it('should get a block template', async () => {
+  it('should get a block template (regtest)', async () => {
     let json = await wallet.client.rpc.execute('getblocktemplate', []);
     assert.deepStrictEqual(json, {
       capabilities: [ 'proposal' ],
@@ -210,7 +210,7 @@ describe('HTTP', function() {
     });
   });
 
-  it('should send a block template proposal', async () => {
+  it('should send a block template proposal (regtest)', async () => {
     let attempt = await node.miner.createBlock();
     let block = attempt.toBlock();
     let hex = block.toRaw().toString('hex');

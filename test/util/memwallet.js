@@ -15,6 +15,7 @@ const Bloom = require('../../lib/utils/bloom');
 const KeyRing = require('../../lib/primitives/keyring');
 const Outpoint = require('../../lib/primitives/outpoint');
 const Coin = require('../../lib/primitives/coin');
+const Script = require('../../lib/script/script');
 
 function MemWallet(options) {
   if (!(this instanceof MemWallet))
@@ -385,7 +386,7 @@ MemWallet.prototype.template = function template(mtx) {
 MemWallet.prototype.sign = function sign(mtx) {
   let keys = this.deriveInputs(mtx);
   mtx.template(keys);
-  mtx.sign(keys);
+  mtx.sign(keys, Script.hashType.ALL | Script.hashType.FORK_ID);
 };
 
 MemWallet.prototype.create = async function create(options) {

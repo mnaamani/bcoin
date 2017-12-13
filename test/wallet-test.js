@@ -522,10 +522,11 @@ describe('Wallet', function() {
 
     assert.equal(t2.getFee(view), 5250);
 
-    assert.equal(t2.getWeight(), 2084);
-    assert.equal(t2.getBaseSize(), 521);
-    assert.equal(t2.getSize(), 521);
-    assert.equal(t2.getVirtualSize(), 521);
+    // segwit not applicable
+    //assert.equal(t2.getWeight(), 2084);
+    assert.equal(t2.getBaseSize(), 519);
+    assert.equal(t2.getSize(), 519);
+    assert.equal(t2.getVirtualSize(), 519);
 
     w2.once('balance', (b) => {
       balance = b;
