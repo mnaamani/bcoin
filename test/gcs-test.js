@@ -75,8 +75,8 @@ describe('GCS', function() {
     'b7c3c4bce1a23baef2da05f9b7e4bff813449ec7e80f980ec7e4cacfadcd3314',
     300);
 
-  addr1 = new Address('bc1qmyrddmxglk49ye2wd29wefaavw7es8k5d555lx');
-  addr2 = new Address('bc1q4645ycu0l9pnvxaxnhemushv0w4cd9flkqh95j');
+  // addr1 = new Address('bc1qmyrddmxglk49ye2wd29wefaavw7es8k5d555lx');
+  // addr2 = new Address('bc1q4645ycu0l9pnvxaxnhemushv0w4cd9flkqh95j');
 
   it('should test GCS filter build', () => {
     filter1 = GCSFilter.fromItems(P, key, contents1);
@@ -155,9 +155,9 @@ describe('GCS', function() {
     assert(filter.match(key, op2.toRaw()));
     assert(!filter.match(key, op3.toRaw()));
     assert(!filter.match(key, op4.toRaw()));
-    assert(filter.match(key, addr1.hash));
-    assert(filter.match(key, addr2.hash));
-    assert(filter.matchAny(key, [op1.toRaw(), addr1.hash]));
+    // assert(filter.match(key, addr1.hash));
+    // assert(filter.match(key, addr2.hash));
+    // assert(filter.matchAny(key, [op1.toRaw(), addr1.hash]));
     assert(filter.matchAny(key, [op1.toRaw(), op3.toRaw()]));
     assert(!filter.matchAny(key, [op3.toRaw(), op4.toRaw()]));
   });

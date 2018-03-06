@@ -134,11 +134,11 @@ describe('Wallet', function() {
     await testP2PKH(false, false);
   });
 
-  it('should sign/verify witnesspubkeyhash tx', async () => {
+  xit('should sign/verify witnesspubkeyhash tx', async () => {
     await testP2PKH(true, false);
   });
 
-  it('should sign/verify witnesspubkeyhash tx with bullshit nesting', async () => {
+  xit('should sign/verify witnesspubkeyhash tx with bullshit nesting', async () => {
     await testP2PKH(true, true);
   });
 
@@ -747,11 +747,11 @@ describe('Wallet', function() {
     await testMultisig(false, false);
   });
 
-  it('should verify 2-of-3 witnessscripthash tx', async () => {
+  xit('should verify 2-of-3 witnessscripthash tx', async () => {
     await testMultisig(true, false);
   });
 
-  it('should verify 2-of-3 witnessscripthash tx with bullshit nesting', async () => {
+  xit('should verify 2-of-3 witnessscripthash tx with bullshit nesting', async () => {
     await testMultisig(true, true);
   });
 
